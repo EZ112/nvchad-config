@@ -97,13 +97,14 @@ local plugins = {
     dependencies = {
       { "tpope/vim-dadbod", lazy = true },
       { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
-      { "tpope/vim-dotenv", lazy = true },
+      { "tpope/vim-dotenv", lazy = false },
     },
     cmd = {
       "DBUI",
       "DBUIToggle",
       "DBUIAddConnection",
       "DBUIFindBuffer",
+      "Dotenv",
     },
     init = function()
       require "custom.configs.dadbod-ui"

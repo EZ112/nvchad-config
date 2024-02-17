@@ -6,3 +6,6 @@ vim.g.db_ui_table_helpers = {
     List = 'select * from "{table}" order by id asc limit 10',
   },
 }
+vim.cmd { cmd = "Dotenv", args = {
+  vim.fn.stdpath "config" .. "/lua/custom",
+} }
