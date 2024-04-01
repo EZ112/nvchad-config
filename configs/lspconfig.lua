@@ -14,7 +14,7 @@ end
 lspconfig.astro.setup {
   init_options = {
     typescript = {
-      serverPath = "/home/ez/.local/share/nvim/mason/packages/astro-language-server/node_modules/@astrojs/language-server",
+      tsdk = vim.fs.normalize "~/.local/share/nvim/mason/packages/typescript-language-server/node_modules/typescript/lib",
     },
   },
 }
