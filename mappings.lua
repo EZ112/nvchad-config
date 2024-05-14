@@ -60,4 +60,11 @@ M.dad_bod = {
   },
 }
 
+M.window_split = {
+  n = {
+    ["<leader>sv"] = { ":vsp<CR>", "Windows Split Vertical" },
+    ["<leader>sh"] = { ":sp<CR>", "Windows Split Horizontal" },
+  },
+}
+
 return M
