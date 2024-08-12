@@ -67,4 +67,20 @@ M.window_split = {
   },
 }
 
+M.auto_session = {
+  n = {
+    ["<leader>ss"] = { ":AutoSessionSave<CR>", "Save Session" },
+    ["<leader>sd"] = { ":AutoSessionDelete<CR>", "Delete Session" },
+  },
+}
+
+M.kulala = {
+  n = {
+    ["<leader>kr"] = { ":lua require('kulala').run()<CR>", "Run Kulala" },
+    ["<leader>kcp"] = { ":lua require('kulala').copy()<CR>", "Copy Kulala" },
+    ["<leader>kcl"] = { ":lua require('kulala').close()<CR>", "Close Kulala" },
+    ["<leader>kt"] = { ":lua require('kulala').toggle_view()<CR>", "Toggle View Kulala" },
+  },
+}
+
 return M

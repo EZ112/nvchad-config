@@ -20,6 +20,7 @@ local plugins = {
         "vim",
         "lua",
         -- web dev
+        "http",
         "html",
         "css",
         "astro",
@@ -148,6 +149,13 @@ local plugins = {
       warn_on_setup = true,
       autosave_on_quit = true,
     },
+  },
+  {
+    "mistweaverco/kulala.nvim",
+    config = function()
+      -- Setup is required, even if you don't pass any options
+      require("kulala").setup()
+    end,
   },
 }
 
