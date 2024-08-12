@@ -6,7 +6,7 @@ local lint = null_ls.builtins.diagnostics
 local code_actions = null_ls.builtins.code_actions
 
 local eslint_cwd = function(params)
-  return lspconfig_util.root_pattern "tsconfig.json"(params.bufname)
+  return lspconfig_util.root_pattern "tsconfig.json" (params.bufname)
 end
 
 local eslint_condition = function(utils)

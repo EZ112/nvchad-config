@@ -139,6 +139,16 @@ local plugins = {
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     ft = { "html", "svelte", "astro", "vue", "typescriptreact", "php", "blade" },
   },
+  {
+    "pysan3/autosession.nvim",
+    lazy = false,
+    dependencies = { "mhinz/vim-startify" },
+    opts = {
+      restore_on_setup = true,
+      warn_on_setup = true,
+      autosave_on_quit = true,
+    },
+  },
 }
 
 return plugins
