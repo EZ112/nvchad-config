@@ -80,6 +80,8 @@ M.kulala = {
     ["<leader>kcp"] = { ":lua require('kulala').copy()<CR>", "Copy Kulala" },
     ["<leader>kcl"] = { ":lua require('kulala').close()<CR>", "Close Kulala" },
     ["<leader>kt"] = { ":lua require('kulala').toggle_view()<CR>", "Toggle View Kulala" },
+    ["[e"] = { ":lua require('kulala').jump_prev()<CR>", "Kulala Jump Prev" },
+    ["]e"] = { ":lua require('kulala').jump_next()<CR>", "Kulala Jump Next" },
   },
 }
 
