@@ -6,6 +6,18 @@ local plugins = {
       config = function()
         require "custom.configs.null-ls"
       end,
+      {
+        "williamboman/mason-lspconfig.nvim",
+        opts = {
+          handlers = {
+            ["jdtls"] = function()
+              require("java").setup {
+                jdk = { auto_install = false },
+              }
+            end,
+          },
+        },
+      },
     },
     config = function()
       require "plugins.configs.lspconfig"
@@ -48,6 +60,7 @@ local plugins = {
   { "habamax/vim-godot", event = "VimEnter" },
   {
     "williamboman/mason.nvim",
+    dependencies = { "nvim-java/nvim-java" },
     opts = {
       ensure_installed = {
         "astro-language-server",
@@ -59,15 +72,9 @@ local plugins = {
         "typescript-language-server",
         "clangd",
       },
-    },
-  },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    opts = {
-      handlers = {
-        ["jdtls"] = function()
-          require("java").setup()
-        end,
+      registries = {
+        "github:nvim-java/mason-registry",
+        "github:mason-org/mason-registry",
       },
     },
   },
@@ -77,9 +84,7 @@ local plugins = {
   },
   {
     "ThePrimeagen/harpoon",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
+    dependencies = { "nvim-lua/plenary.nvim" },
     lazy = false,
   },
   {
@@ -187,18 +192,6 @@ local plugins = {
       vim.g.mkdp_filetypes = { "markdown" }
     end,
     ft = { "markdown" },
-  },
-  {
-    "nvim-java/nvim-java",
-    dependencies = {
-      "williamboman/mason.nvim",
-      opts = {
-        registries = {
-          "github:nvim-java/mason-registry",
-          "github:mason-org/mason-registry",
-        },
-      },
-    },
   },
   {
     "rcarriga/nvim-dap-ui",
