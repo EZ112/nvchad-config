@@ -15,7 +15,9 @@ local servers = {
   "jdtls",
 }
 
-require("java").setup()
+require("java").setup {
+  jdk = { auto_install = false },
+}
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,

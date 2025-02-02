@@ -94,7 +94,7 @@ M.markdown_preview = {
 M.dap = {
   n = {
     ["<leader>db"] = { ":lua require('dap').toggle_breakpoint()<CR>", "Debug Toggle Breakpoint" },
-    ["<leader>dc"] = { ":lua require('dap').clear_breakpoint()<CR>", "Debug Clear Breakpoint" },
+    ["<leader>dc"] = { ":lua require('dap').clear_breakpoints()<CR>", "Debug Clear Breakpoints" },
     ["<leader>d]"] = { ":lua require('dap').continue()<CR>", "Debug Run/Continue" },
     ["<leader>ds"] = {
       function()
