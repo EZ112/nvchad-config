@@ -22,8 +22,15 @@ local sources = {
   formatting.stylua,
   formatting.deno_fmt.with { condition = deno_condition },
   formatting.eslint_d.with { cwd = eslint_cwd, condition = eslint_condition },
+  formatting.gofumpt,
+  formatting.csharpier,
+  formatting.clang_format,
+  formatting.gdformat,
   lint.deno_lint.with { condition = deno_condition },
   lint.eslint_d.with { cwd = eslint_cwd, condition = eslint_condition },
+  lint.gdlint,
+  lint.golangci_lint,
+  lint.golangci_lint,
   code_actions.eslint_d.with { cwd = eslint_cwd },
 }
 

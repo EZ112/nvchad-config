@@ -85,4 +85,32 @@ M.kulala = {
   },
 }
 
+M.markdown_preview = {
+  n = {
+    ["<leader>mp"] = { ":MarkdownPreviewToggle<CR>", "Toggle Markdown Preview" },
+  },
+}
+
+M.dap = {
+  n = {
+    ["<leader>db"] = { ":lua require('dap').toggle_breakpoint()<CR>", "Debug Toggle Breakpoint" },
+    ["<leader>dc"] = { ":lua require('dap').clear_breakpoint()<CR>", "Debug Clear Breakpoint" },
+    ["<leader>d]"] = { ":lua require('dap').continue()<CR>", "Debug Run/Continue" },
+    ["<leader>ds"] = {
+      function()
+        require("dap").session()
+        require("dapui").open()
+      end,
+      "Debug New Session",
+    },
+    ["<leader>dt"] = {
+      function()
+        require("dap").terminate()
+        require("dapui").close()
+      end,
+      "Debug Terminate",
+    },
+  },
+}
+
 return M

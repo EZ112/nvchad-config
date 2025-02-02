@@ -24,17 +24,28 @@ local plugins = {
         "html",
         "css",
         "astro",
+        "json",
+        "graphql",
+        "go",
+        -- game dev
+        "gdscript",
+        "godot_resource",
+        "gdshader",
+        -- high level
+        "java",
+        "python",
+        "c_sharp",
         "javascript",
         "typescript",
         "tsx",
-        "json",
-        "graphql",
-        "python",
         -- low level
         "c",
+        "cpp",
       },
+      indent = { enable = true, disable = { "gdscript" } },
     },
   },
+  { "habamax/vim-godot", event = "VimEnter" },
   {
     "williamboman/mason.nvim",
     opts = {
@@ -46,6 +57,17 @@ local plugins = {
         "stylua",
         "emmet-ls",
         "typescript-language-server",
+        "clangd",
+      },
+    },
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    opts = {
+      handlers = {
+        ["jdtls"] = function()
+          require("java").setup()
+        end,
       },
     },
   },
@@ -155,6 +177,34 @@ local plugins = {
     config = function()
       -- Setup is required, even if you don't pass any options
       require("kulala").setup()
+    end,
+  },
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && yarn install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
+  },
+  {
+    "nvim-java/nvim-java",
+    dependencies = {
+      "williamboman/mason.nvim",
+      opts = {
+        registries = {
+          "github:nvim-java/mason-registry",
+          "github:mason-org/mason-registry",
+        },
+      },
+    },
+  },
+  {
+    "rcarriga/nvim-dap-ui",
+    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+    config = function()
+      require("dapui").setup()
     end,
   },
 }

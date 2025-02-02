@@ -2,8 +2,20 @@ local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
-local servers = { "html", "cssls", "emmet_ls", "mdx_analyzer", "tailwindcss" }
+local servers = {
+  "html",
+  "cssls",
+  "emmet_ls",
+  "mdx_analyzer",
+  "tailwindcss",
+  "gdscript",
+  "csharp_ls",
+  "golangci_lint_ls",
+  "gopls",
+  "jdtls",
+}
 
+require("java").setup()
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
@@ -17,6 +29,12 @@ lspconfig.astro.setup {
       tsdk = vim.fs.normalize "~/.local/share/nvim/mason/packages/typescript-language-server/node_modules/typescript/lib",
     },
   },
+}
+
+lspconfig.clangd.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  root_dir = lspconfig.util.root_pattern ".clang-format",
 }
 
 lspconfig.eslint.setup {
@@ -46,9 +64,33 @@ lspconfig.denols.setup {
   },
 }
 
-lspconfig.tsserver.setup {
+lspconfig.ts_ls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   root_dir = lspconfig.util.root_pattern "package.json",
   single_file_support = false,
+}
+
+lspconfig.lua_ls.setup {
+  on_init = function(client)
+    local path = client.workspace_folders[1].name
+    if vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc") then
+      return
+    end
+
+    client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+      runtime = {
+        version = "LuaJIT",
+      },
+      workspace = {
+        checkThirdParty = false,
+        library = {
+          vim.env.VIMRUNTIME,
+        },
+      },
+    })
+  end,
+  settings = {
+    Lua = {},
+  },
 }

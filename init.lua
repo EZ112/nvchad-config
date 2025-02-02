@@ -4,5 +4,6 @@ filetype.add {
   extension = {
     mdx = "markdown.mdx",
     http = "http",
+    mjml = "html",
   },
 }
