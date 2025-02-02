@@ -2,7 +2,7 @@
 local M = {}
 M.ui = {
   theme = "github_dark",
-  hl_override = { Comment = { fg = "green" } },
+  hl_override = { Comment = { fg = "green" }, ["@comment"] = { fg = "green" } },
   transparency = true,
 }
 M.plugins = "custom.plugins"
