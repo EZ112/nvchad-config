@@ -12,7 +12,6 @@ local servers = {
   "csharp_ls",
   "golangci_lint_ls",
   "gopls",
-  "jdtls",
 }
 
 for _, lsp in ipairs(servers) do
@@ -21,6 +20,19 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
+
+lspconfig.jdtls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    java = {
+      home = "~/.sdkman/candidates/java/current",
+      maven = {
+        home = "~/.sdkman/candidates/maven/current",
+      },
+    },
+  },
+}
 
 lspconfig.astro.setup {
   init_options = {

@@ -14,6 +14,7 @@ local plugins = {
           handlers = {
             ["jdtls"] = function()
               require("java").setup {
+                root_markers = { ".git" },
                 jdk = { auto_install = false },
               }
             end,
